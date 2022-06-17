@@ -1,7 +1,7 @@
 import numpy as np
 from image_utils import *
 
-def evaluate_detector(bboxes, positive_probabilites, gt_box=[82,91,84,84]):
+def evaluate_detector(bboxes, positive_probabilites, gt_box):#=[82,91,84,84]):
     
     true_positives_number = np.zeros((100))
     actual_positives = np.zeros((100))
@@ -23,7 +23,7 @@ def evaluate_detector(bboxes, positive_probabilites, gt_box=[82,91,84,84]):
             positive_bboxes_prob = positive_probabilites[positive_probabilites>=probability_threshold]
            
             if len(positive_bboxes) > 0:
-                [selected_bboxes, selected_scores] = non_max_suppression(positive_bboxes, positive_bboxes_prob,0.3)
+                [selected_bboxes, selected_scores] = non_max_suppression(positive_bboxes, positive_bboxes_prob,0.3) #cambiado (0.3 orig)
 
                 ratio = []
                 for selected_bbox in selected_bboxes:
